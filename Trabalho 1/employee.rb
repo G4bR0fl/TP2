@@ -1,35 +1,50 @@
 class Employee
-	def initialize(name, age, birth_date, salary, sector)
-		@name = name;
-		@age = age.to_i;
-		@birth_date = birth_date;
-		@salary = salary.to_f;
-		@sector = sector;
+	def initialize(name, age, birth_date, cpf, identification_number, join_date, salary, sector)
+		@name = name
+		@age = age.to_i
+    @birth_date = birth_date
+    @cpf = cpf #Aqui a gente pode fazer a transformacao pra inteiro ou n, vcs que sabem
+    @identification_number = identification_number
+    @join_date = join_date
+		@salary = salary.to_f
+		@sector = sector
 	end
 	
 	def get_salary()
-		return @salary;
+		return @salary
 	end
 
 	def change_salary(new_salary)
-		@salary = new_salary;
+		@salary = new_salary
 	end
 
 	def get_age()
-		return @age;
+		return @age
 	end
 
 	def get_name()
-		return @name;
+		return @name
 	end
 
 	def get_birth_date()
-		return @birth_date;
+		return @birth_date
 	end
 
 	def get_sector()
-		return @sector;
-	end
+		return @sector
+  end
+  
+  def get_cpf()
+    return @cpf
+  end
+
+  def get_join_date()
+    return @join_date
+  end
+
+  def get identification_number()
+    return @identification_number
+  end 
 
 
 	
@@ -37,7 +52,7 @@ end
 
 
 def Employee_sort(employees)
-	n = employees.length;
+	n = employees.length
 	employees.sort! { |a, b|  a.get_age <=> b.get_age }
 end
 
