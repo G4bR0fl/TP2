@@ -38,12 +38,6 @@ end
 
 def Employee_sort(employees)
 	n = employees.length;
-	for i in 0...n do
-		for j in i+1...n do
-			if(employees[i].get_age() > employees[j].get_age())
-				employees[i],employees[j] = employees[j],employees[i];
-			end
-		end
-	end
+	employees.sort! { |a, b|  a.get_age <=> b.get_age }
 end
 
