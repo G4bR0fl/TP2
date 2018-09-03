@@ -2,10 +2,10 @@ class Employee
 	def initialize(name, age, birth_date, cpf, identification_number, join_date, salary, sector)
 		@name = name
 		@age = age.to_i
-    @birth_date = birth_date
-    @cpf = cpf #Aqui a gente pode fazer a transformacao pra inteiro ou n, vcs que sabem
-    @identification_number = identification_number
-    @join_date = join_date
+		@birth_date = birth_date
+		@cpf = cpf #Aqui a gente pode fazer a transformacao pra inteiro ou n, vcs que sabem
+		@identification_number = identification_number
+		@join_date = join_date
 		@salary = salary.to_f
 		@sector = sector
 	end
