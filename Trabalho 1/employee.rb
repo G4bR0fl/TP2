@@ -42,7 +42,7 @@ class Employee
     return @join_date
   end
 
-  def get identification_number()
+  def get_identification_number()
     return @identification_number
   end 
 
