@@ -1,5 +1,5 @@
 class Employee
-	def initialize(name, age, birth_date, cpf, identification_number, join_date, salary, sector)
+	def initialize(name, age, birth_date, cpf, identification_number, join_date, salary, sector, role)
 		@name = name
 		@age = age.to_i
 		@birth_date = birth_date
@@ -7,7 +7,8 @@ class Employee
 		@identification_number = identification_number
 		@join_date = join_date
 		@salary = salary.to_f
-		@sector = sector
+    @sector = sector
+    @role = role
 	end
 	
 	def get_salary()
@@ -46,8 +47,10 @@ class Employee
     return @identification_number
   end 
 
+  def get_role()
+    return @role
+  end
 
-	
 end
 
 
