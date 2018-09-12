@@ -7,8 +7,8 @@ class Employee
 		@identification_number = identification_number
 		@join_date = join_date
 		@salary = salary.to_f
-    @sector = sector
-    @role = role
+    		@sector = sector
+    		@role = role
 	end
 	
 	def get_salary()
@@ -33,23 +33,23 @@ class Employee
 
 	def get_sector()
 		return @sector
-  end
+  	end
   
-  def get_cpf()
-    return @cpf
-  end
+  	def get_cpf()
+		return @cpf
+  	end
 
-  def get_join_date()
-    return @join_date
-  end
+	def get_join_date()
+		return @join_date
+	end
 
-  def get_identification_number()
-    return @identification_number
-  end 
+	def get_identification_number()
+		return @identification_number
+	end 
 
-  def get_role()
-    return @role
-  end
+	def get_role()
+		return @role
+	end
 
 end
 
