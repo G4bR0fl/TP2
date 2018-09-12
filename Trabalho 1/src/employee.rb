@@ -1,5 +1,9 @@
 class Employee
+	@@curr_id = 0
 	def initialize(name, age, birth_date, cpf, identification_number, join_date, salary, sector)
+		# ID is auto incremental field. Not strictly necessary, though.
+		@id = @@curr_id + 1
+		@@curr_id = @@curr_id + 1
 		@name = name
 		@age = age.to_i
 		@birth_date = birth_date
