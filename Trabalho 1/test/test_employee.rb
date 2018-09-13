@@ -5,10 +5,10 @@ require_relative "../src/Job"
 
 class MyTest < Test::Unit::TestCase
     def setup
-        @job_1 = Job.new('Auxiliar', 200)
-        @job_2 = Job.new('Tecnico', 200)
-        @employee_1 = Employee.new('Jose', 20, Time.parse('25/11/1997'), '111.111.111-00', '001', Time.parse('10/02/2005'),  1500.00, 'Finanças', @job_1 )
-        @employee_2 = Employee.new('Thiago', 19, Time.parse('7/10/1998'), '222.222.222-00', '002', Time.parse('31/11/2010'), 1200.00, 'Marketing', @job_2 )
+        @job_1 = Job.new('Auxiliar', 1500)
+        @job_2 = Job.new('Tecnico', 3000)
+        @employee_1 = Employee.new('Jose', 20, Time.parse('25/11/1997'), '111.111.111-00', '001', Time.parse('10/02/2005'),  350.00, 'Finanças', @job_1 )
+        @employee_2 = Employee.new('Thiago', 19, Time.parse('7/10/1998'), '222.222.222-00', '002', Time.parse('31/11/2010'), 350.00, 'Marketing', @job_2 )
     end
 
     def test_get_name
@@ -43,8 +43,8 @@ class MyTest < Test::Unit::TestCase
     end
     
     def test_get_salary
-        assert_equal(1700, @employee_1.get_salary())
-        assert_equal(1400, @employee_2.get_salary())
+        assert_equal(1850, @employee_1.get_salary())
+        assert_equal(3350, @employee_2.get_salary())
     end
 
 
