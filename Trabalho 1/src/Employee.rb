@@ -13,8 +13,8 @@ class Employee
 		@identification_number = identification_number
 		@join_date = join_date
 		@salary_bonus = bonus.to_i
-    	@sector = sector
-    	@role = role
+    		@sector = sector
+    		@role = role
 	end
 	
 	def get_salary()
