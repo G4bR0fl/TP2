@@ -25,9 +25,9 @@ class JobTest < Test::Unit::TestCase
         assert_equal(3000, @job_tech.get_salary())
     end
 
-    def
-        @job_aux.set_salary()
-        @job_tech.set_salary()
+    def test_set_salaray
+        @job_aux.set_salary(2000)
+        @job_tech.set_salary(3500)
         assert_equal(2000, @job_aux.get_salary())
         assert_equal(3500, @job_tech.get_salary()) 
     end

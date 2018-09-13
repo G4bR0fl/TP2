@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'time'
-require_relative "../src/employee"
+require_relative "../src/Employee"
 
 
 class MyTest < Test::Unit::TestCase

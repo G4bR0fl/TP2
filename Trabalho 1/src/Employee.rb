@@ -2,7 +2,7 @@ require_relative "Job"
 
 class Employee
 	@@curr_id = 0
-	def initialize(name, age, birth_date, cpf, identification_number, join_date, bonus, sector)
+	def initialize(name, age, birth_date, cpf, identification_number, join_date, bonus, sector, role)
 		# ID is auto incremental field. Not strictly necessary, though.
 		@id = @@curr_id + 1
 		@@curr_id = @@curr_id + 1
