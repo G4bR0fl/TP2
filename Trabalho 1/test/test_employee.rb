@@ -3,7 +3,7 @@ require 'time'
 require_relative "../src/Employee"
 require_relative "../src/Job"
 
-class MyTest < Test::Unit::TestCase
+class EmployeeTest < Test::Unit::TestCase
     def setup
         @job_1 = Job.new('Auxiliar', 200)
         @job_2 = Job.new('Tecnico', 200)
