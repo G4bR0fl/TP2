@@ -18,7 +18,7 @@ class Employee
 	end
 	
 	def get_salary()
-		return @job.get_salary() + @salary_bonus
+		return @role.get_salary() + @salary_bonus
 	end
 
 	def change_salary(new_salary)
