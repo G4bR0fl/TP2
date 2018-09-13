@@ -47,5 +47,12 @@ class MyTest < Test::Unit::TestCase
         assert_equal(1400, @employee_2.get_salary())
     end
 
+    def test_set_salary
+        @employee_1.set_salary(700)
+        @employee_2.set_salary(1000)
+        assert_equal(2200, @employee_1.get_salary())
+        assert_equal(2200, @employee_2.get_salary())
+    end
+
 
 end
