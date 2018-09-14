@@ -12,17 +12,17 @@ class Employee
 		@cpf = cpf #Aqui a gente pode fazer a transformacao pra inteiro ou n, vcs que sabem
 		@identification_number = identification_number
 		@join_date = join_date
-		@salary_bonus = bonus.to_f
-    	@sector = sector
-    	@role = role
+		@salary_bonus = bonus.to_i
+    		@sector = sector
+    		@role = role
 	end
 	
 	def get_salary()
 		return @role.get_salary() + @salary_bonus
 	end
 
-	def change_salary(new_salary)
-		@salary = new_salary
+	def set_salary(new_salary)
+		return @role.set_salary(new_salary)
 	end
 
 	def get_age()

@@ -3,7 +3,7 @@ require 'time'
 require_relative "../src/Employee"
 require_relative "../src/Job"
 
-class MyTest < Test::Unit::TestCase
+class EmployeeTest < Test::Unit::TestCase
     def setup
         @job_1 = Job.new('Auxiliar', 1500)
         @job_2 = Job.new('Tecnico', 3000)
@@ -45,6 +45,13 @@ class MyTest < Test::Unit::TestCase
     def test_get_salary
         assert_equal(1850, @employee_1.get_salary())
         assert_equal(3350, @employee_2.get_salary())
+    end
+
+    def test_set_salary
+        @employee_1.set_salary(700)
+        @employee_2.set_salary(1000)
+        assert_equal(2200, @employee_1.get_salary())
+        assert_equal(2200, @employee_2.get_salary())
     end
 
 
