@@ -4,8 +4,8 @@ require_relative "../src/Sector"
 
 class SectorTest < Test::Unit::TestCase 
   def setup
-    @x = Sector.new('tecnologia', 'administrator', 1, 'sector director')
-    @y = Sector.new('marketing', 'mercadologist', 2, 'executive director')
+    @x = Sector.new('tecnologia', 'administrator', 1, 4)
+    @y = Sector.new('marketing', 'mercadologist', 2, 3)
     @check1 = 'administrator'
     @check2 = 'mercadologist'
   end
@@ -29,14 +29,33 @@ class SectorTest < Test::Unit::TestCase
     assert_equal("tecnologia", @x.get_sector())
     assert_equal("marketing", @y.get_sector())
   end
-  ##############
-  # def test_add_employee # Need to see if the parameters are right
-    
-  # end
+  
+  def test_get_sector_id
+    assert_equal(4, @x.get_sector_id())
+    assert_equal(3, @y.get_sector_id())
+  end
 
-  # def test_set_director # Need to see if it's fully functional and what's missing
+  
+  def test_add_employee
+    assert_equal(@x, @x.add_employee(@x))
+    assert_equal(@y, @y.add_employee(@y))
+  end
 
+  #######################
+  # Still need to figure out how to print employees properly. 
+  # At the moment employees only increases when add_employee() is called.
+
+  # def test_get_employee_amount
+  #   assert_equal(1, @x.get_employee_amount())
+  #   assert_equal(2, @y.get_employee_amount())
   # end
-  ##############
+  #######################
+  # Still need to figure out how to pass 2 parameters within the assert
+  
+  # def test_set_director 
+  #   assert_equal(@x, 1, @x.set_director(@x, 1))
+  #   assert_equal(@y, 2, @y.set_director(@y, 2))
+  # end
+  
 
 end
