@@ -10,17 +10,16 @@ the director id of the sector and the director of the specific sector.
 =end
 
 class Sector
-  @@curr_id = 0
-  @@employees_qnt = 0
-  def initialize(sector_name, profession, director_id, director)
-    @@curr_id += 1
-    @sector_id = @@curr_id + 1    # campo auto incremental, todo novo sector automaticamente recebe um valor maior
+
+  @@employees_qnt = 0 # Keeps track of how many employees are in the business
+  def initialize(sector_name, profession, director_id, sector_id)
+    @sector_id = sector_id
     @sector_name = sector_name
     @director_id = director_id # a ideia eh que passe o id de um empregado que sera o diretor. Este eh opcional na inicialização.
-    @director = director
     @profession = profession
     @allowed_professionals = Array.new
     @allowed_professionals.push(profession)
+    @director = nil
   end     
   
   # Check  the employee can be in that specific sector
@@ -36,18 +35,9 @@ class Sector
   # Add a new employee      
   def add_employee(employee)
     if check_employee(employee) == true
+      @@employees_qnt += 1
       return employee
     else 
-      return false
-    end
-  end
-  
-  
-  # Defines a new director for a new sector.
-  def set_director(new_dir, sector_id)
-    if check_employee(sector_id) == true
-      return @director = new_dir 
-    else
       return false
     end
   end
@@ -56,25 +46,48 @@ class Sector
   def get_profession()
     return @profession
   end
-
-
-  # Returns the director id(1-3)
+    
+  # Returns the director id(0-3) 
   def get_director_id()
     return @director_id 
   end 
   
+  # Returns the sector name
   def get_sector() 
     return @sector_name
   end
+  
+  # Returns the total amount of employees that have been added
+  def get_employee_amount()
+    return @@employees_qnt 
+  end
 
-  # Still need some adjustments
-    # # Returns the amount of employees on that sector
-    # def get_employee_amount()
-    #   return @@employees_qnt 
-    # end
+  def get_sector_id()
+    return @sector_id
+  end
 
+
+# Defines a new director for a new sector.  
+  def set_director(employee, director_id)
+    if employee.get_director_id() == director_id && employee.get_director_id() != 0 
+      case director_id
+      when 1
+        @director = "Sector director"
+        return @director
+      when 2 
+        @director = "Operations director"
+        return @director
+      when 3
+        @director = "Executive director"
+        return @director
+      end
+    else
+      return false
+    end
+  end  
+  
 end
 
-x = Sector.new('tecnologia', 'administrator', 1, 'sector director')
+x = Sector.new('tecnologia', 'administrator', 1, 3)
+y = Sector.new('marketing', 'mercadologist', 2, 4)
 
-p x.get_profession()
