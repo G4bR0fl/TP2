@@ -88,6 +88,3 @@ class Sector
   
 end
 
-x = Sector.new('tecnologia', 'administrator', 1, 3)
-y = Sector.new('marketing', 'mercadologist', 2, 4)
-
