@@ -1,4 +1,5 @@
 require_relative "Employee"
+require_relative "../assets/colors"
 
 #Setores possiveis: finanças(2), marketing(3), tecnologia(4), normatividade(5) e design(6)
 #Cada setor possui auxiliares, tecnicos, profissionais, e diretores
@@ -11,79 +12,90 @@ the director id of the sector and the director of the specific sector.
 
 class Sector
 
-  @@employees_qnt = 0 # Keeps track of how many employees are in the business
-  def initialize(sector_name, profession, director_id, sector_id)
-    @sector_id = sector_id
+  @@curr_id = 0    # number of sectors created until now
+
+  def self.get_quantity_Sectors()
+      return @@curr_id
+  end
+
+  def initialize(sector_name, professions) 
+    @@curr_id += 1
+    @sector_id = @@curr_id
     @sector_name = sector_name
-    @director_id = director_id # a ideia eh que passe o id de um empregado que sera o diretor. Este eh opcional na inicialização.
-    @profession = profession
-    @allowed_professionals = Array.new
-    @allowed_professionals.push(profession)
+    @allowed_professionals = professions
     @director = nil
+    @quantity_employees = 0
+    
   end     
   
-  # Check  the employee can be in that specific sector
+  # Check if a prospective employee can be in that specific sector. This happens if at least one of the employees formations is in the allowed professions of the sector.
+  # Auxiliar and Técnico can be from any line of formation.
   def check_employee(employee) 
-    flag = employee.get_profession()
-    if @allowed_professionals.include?(flag)
+    flag = employee.get_formation()
+    if @allowed_professionals & flag() != [] or employee.get_role() == "Auxiliar" or employee.get_role() == "Técnico"
       return true
     else
       return false
     end
   end
-  
-  # Add a new employee      
-  def add_employee(employee)
-    if check_employee(employee) == true
-      @@employees_qnt += 1
-      return employee
+
+  # Amount of employees in this sector
+  def get_employee_amount()
+    return @quantity_employees 
+  end
+
+ 
+  # Add a new employee to this sector
+  def add_employee(new_employee)
+    if check_employee(new_employee) == true
+      @@quantity_employees += 1
+      new_employee.set_sector(self)
+      return true
     else 
+      puts "WARNING!".yellow + " This employee's profession is not allowed for this sector."
       return false
     end
   end
 
+  # Removes employee from this sector
+  def rm_employee()
+    @@quantity_employees -= 1
+  end
+
   # Returns which profession the current employee has
-  def get_profession()
-    return @profession
+  def get_allowed_professions()
+    return @allowed_professionals
   end
-    
-  # Returns the director id(0-3) 
-  def get_director_id()
-    return @director_id 
-  end 
-  
+ 
+  def add_allowed_profession( new_profession )
+    @allowed_professionals.push(new_profession)
+  end
+
+  def rm_allowed_profession( old_profession )
+    @allowed_professionals.delete(old_profession)
+  end
+
   # Returns the sector name
-  def get_sector() 
+  def get_sector_name() 
     return @sector_name
-  end
-  
-  # Returns the total amount of employees that have been added
-  def get_employee_amount()
-    return @@employees_qnt 
   end
 
   def get_sector_id()
     return @sector_id
   end
 
-
-# Defines a new director for a new sector.  
-  def set_director(employee, director_id)
-    if employee.get_director_id() == director_id && employee.get_director_id() != 0 
-      case director_id
-      when 1
-        @director = "Sector director"
-        return @director
-      when 2 
-        @director = "Operations director"
-        return @director
-      when 3
-        @director = "Executive director"
-        return @director
-      end
-    else
-      return false
-    end
+  def set_sector_name( new_name )
+    @sector_name = new_name
+  end
+  
+ def get_director()
+    return @director
+  end 
+ 
+  # Defines a new director for a new sector.  
+  def set_director(director)
+    raise "ERROR!".red + " Argument provided is not an Employee" if !director.instance_of? Employee
+    @director = director
   end  
   
 end
