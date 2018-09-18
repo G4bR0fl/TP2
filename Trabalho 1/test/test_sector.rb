@@ -48,12 +48,12 @@ class SectorTest < Test::Unit::TestCase
 
   #######################
   # Still need to figure out how to print employees properly. 
-
+  #
   # def test_get_employee_amount
   #   assert_equal(1, @x.get_employee_amount())
   #   assert_equal(2, @y.get_employee_amount())
   # end
-  
+  #
   #######################
   
 
