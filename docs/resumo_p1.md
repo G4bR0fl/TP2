@@ -4,7 +4,10 @@
 
 **SEMPRE** deve ser feito testes durante a criação de um programa.
 
-### TDD
+> É a verificação feita sobre o sistema ou parte dele para garantir que determinada entrada sempre irá produzir a saída esperada.
+
+Apenas testes não garantem a qualidade do sistema.
+### TDD 
 
 *Test Driven Development* (TDD) ou em português **Desenvolvimento guiado por testes** é uma técnica de desenvolvimento de software que se relaciona com o conceito de verificação e validação e se baseia em um ciclo curto de repetições: 
 1. O desenvolvedor escreve um caso de teste que define uma melhoria desejada ou uma nova funcionalidade.
@@ -20,15 +23,15 @@
 ### Técnicas de fazer testes
 - **Caixa Branca:** existe conhecimento prévio sobre o código, se sabe o que deseja testar.
 - **Caixa Preta:** não se conhece o código, deve-se colocar uma entrada e observar a saída.
-- **Caixa Cinza:** :interrobang:
+- **Caixa Cinza:** apenas parte do código é conhecido, e não ele todo. ❓
 - **Caixa Colorida:** :interrobang:
 
 ### Niveis de testes
 #### Unitário
- O objetivo do teste unitário é encontrar falhas de funcionamento dentro de uma pequena parte do sistema, ele é funciona independente do todo. Normalmente ele é **realizado pelo programador** e os alvos são subrotinas, métodos, classes. Geralmente é automatizado. Nele é utilizada a técnica da **Caixa Branca**.
+ O objetivo do teste unitário é encontrar falhas de funcionamento dentro de uma pequena parte do sistema, que funciona independente do todo. Normalmente ele é **realizado pelo programador** e os alvos são subrotinas, métodos, classes. Geralmente é automatizado. Nele é utilizada a técnica da **Caixa Branca**.
 
 #### Integração
- O objetivo é validar a comunicação entre os componentes do sistema. Também normalmente **realizado pelo programador** e seus alvos são funcionalidades que envolvem a integração dos componentes. Com esse teste normalmente são encontradas falhas na trasmissão de dados. Geralmente é automatizado. Podem ser realizados durante a produção do sistema. Técnica da **Caixa Preta**(?).
+ O objetivo é validar a comunicação entre os componentes do sistema. Também normalmente **realizado pelo programador** e seus alvos são funcionalidades que envolvem a integração dos componentes. Com esse teste normalmente são encontradas falhas na trasmissão de dados. Geralmente é automatizado. Podem ser realizados durante a produção do sistema. Técnica da **Caixa Preta** (?).
 
 #### Sistema
  Objetiva executar o sistama sob pornto de vista do usuário final, varrendo as funciolidades em busca de falhas em relação aos objetivos originais. **Executado pela equipe de teste**. Esse tipo de teste é realizado após a conclusão do sistema. Normalmente utilizada a técnica da **Caixa Preta**.
@@ -48,9 +51,9 @@
 ### Tipos de Testes
 - Funcionalidade: *ver se ta funcionando tudo*.
 - Desempenho: analisar o tempo de resposta de um sistema e se é satisfatório.
-- Usabilidade: validar a experiência de ussário.
+- Usabilidade: validar a experiência de ususário.
 - Seguraça: validar a proteção do sistema contra invasões.
-- Portabilidade: *ve se funciona em diferentes plataformas*.
+- Portabilidade: *ver se o sistema funciona em diferentes plataformas*.
 - Stress: validar se funciona em condições extremas - i.e *matriculaweb no 1º dia de matricula*
 
 ### Analise Estática X  Dinâmica
@@ -71,3 +74,14 @@ Valida o sistema através de execuções. Método *maratona de programação*, s
 #### As análises estáticas e dinâmicas se complementam :sunglasses:
 
 ### BeforeAll, Before, test, After, AfterAll
+Comandos do Framework de testes JUnit. 
+
+**BeforeAll** - Executado apenas 1 vez antes de todos os testes. Deve garantir as condições mínimas para a suíte de testes.
+
+**Before** - Executado antes de cada *test* que esteja abaixo de um Before (a não ser que tenha mais de um Before). Deve gerantir as condições para os testes que serão realizados.
+
+**test** - O teste propriamente dito
+
+**After** - Funciona da mesma maneira que o Before, mas é executado *depois* de cada teste. Serve para limpar valores ou desfazer mudanças que o teste fez.
+
+**AfterAll** - Funciona como o BeforeAll mas é executado 1 vez ao final de todos os testes. Serve para eliminar qualquer valor que ainda tenha sido alterado pela suíte de teste, ou talvez fazer estatísticas de tempo/desempenho da suíte de testes.
