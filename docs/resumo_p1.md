@@ -26,7 +26,9 @@
 ### Niveis de testes
 - **Unitário** → O teste unitário tem como objetivo encontrar pequenas falhas isoladas dentro do sistema, ou seja, partes do sistema que funcionam independente do todo. (Ex.: Classes, módulos e subrotinas) → É utilizada a técnica da Caixa Branca.
 - **Integração** → O teste de integração tem como objetivo principal validar a comunicação entre componentes do sistema. Os alvos para tal, são funcionalidades que envolvem a integração de componentes. Geralmente suas falhas são de transmissão de dados.
+... São feitos pelos programadores. (Ex.: 'A' invoca um método de 'B' esperando um valor inteiro, porém vem um valor decimal, causando uma falha no componente A).
 - **Sistema** → O teste de sistema tem como objetivo executar o sistema sob ponto de vista do usuário final, varrendo as funcionalidades em busca de falhas em relação aos objetivos originais. → É normalmente utilizado a técnica da Caixa Preta.
+...
 - **Aceitação** →  Exatamente o mesmo objetivo do teste de sistema (Ambos estão iguais no slide).
 - **Alpha** → 
 - **Beta** → ...
