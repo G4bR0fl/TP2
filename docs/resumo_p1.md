@@ -40,7 +40,7 @@
  Objetiva executar o sistema de forma não planejada, sob ponto de vista do usuário final, também com um **grupo pequeno de usuário finais**. Ele busca indentificar possíveis erros não detectados até o momento, que podem ser encontrados enquanto o usuário utiliza de forma natural o sistema. A equipe de desenvolvimento deve acompanhar de perto os testes afim de corrigir as falhas e melhorar certos pontos. *Tipo quando o jogo é disponibilizado em Alpha*. **Caixa Preta**
 
 #### Beta
- Tipo alpha, só que atinge um **número maior de pessoas** e os usuário que reportar os erros para a equipe de desenvolvimento, ou seja, a equipe não acompanha nem coleta os erros como no Teste Alpha. *Tipo um jogo em Bete*. **Caixa Preta**
+ Tipo alpha, só que atinge um **número maior de pessoas** e os usuário que reportar os erros para a equipe de desenvolvimento, ou seja, a equipe não acompanha nem coleta os erros como no Teste Alpha. *Tipo um jogo em Beta*. **Caixa Preta**
 
 #### Regressão
  O objetivo desse teste é reexecutar os tester após as alterações serem realizadas no sistema, afim de conferir se tudo continua funcionando corretamente. Consiste em aplicar a cada nova versão, todos os testes que já foram aplicados nas versões anteriores. Testes automáticos fazem muita diferença nesta etapa.
@@ -70,4 +70,4 @@ Valida o sistema através de execuções. Método *maratona de programação*, s
 
 #### As análises estáticas e dinâmicas se complementam :sunglasses:
 
-## BeforeAll, Before, test, After, AfterAll
+### BeforeAll, Before, test, After, AfterAll
