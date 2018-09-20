@@ -14,6 +14,14 @@ Apenas testes não garantem a qualidade do sistema.
 2. É produzido código que possa ser validado pelo teste
 3. O código é refatorado para um código sob padrões aceitáveis.
 
+## Tutorial TDD
+
+1. Criar testes
+2. Forçar compilar
+3. Não passar nos testes
+4. Codar métodos
+5. Passar nos testes
+
 ### Boas práticas na estruturação de testes
 
 1. **Montagen de Cenário:** Ambiente necessário para que se possa realizar testes, é necessário conhecer os atributos e métodos mínimos que serão testados.
