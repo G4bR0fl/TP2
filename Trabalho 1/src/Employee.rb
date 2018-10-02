@@ -48,6 +48,10 @@ class Employee
 		return @sector
   	end
   
+	def set_sector(new_sector)
+		@sector = new_sector
+	end
+	
   	def get_cpf()
 		return @cpf
   	end

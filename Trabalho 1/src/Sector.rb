@@ -18,21 +18,26 @@ class Sector
       return @@curr_id
   end
 
-  def initialize(sector_name, professions) 
+  def initialize(sector_name, professions, director=nil) 
     @@curr_id += 1
     @sector_id = @@curr_id
     @sector_name = sector_name
     @allowed_professionals = professions
-    @director = nil
+    @director = director
     @quantity_employees = 0
-    
   end     
   
-  # Check if a prospective employee can be in that specific sector. This happens if at least one of the employees formations is in the allowed professions of the sector.
+  # Checks if a prospective employee can be in that specific sector. This happens if at least one of the employees formations is in the allowed professions of the sector.
   # Auxiliar and Técnico can be from any line of formation.
   def check_employee(employee) 
     flag = employee.get_formation()
-    if @allowed_professionals & flag() != [] or employee.get_role() == "Auxiliar" or employee.get_role() == "Técnico"
+    if employee.get_Job() == nil
+      role = ""
+    else
+      role = employee.get_role()
+    end
+
+    if @allowed_professionals & flag != [] or role == "Auxiliar" or role == "Técnico"
       return true
     else
       return false
@@ -47,8 +52,11 @@ class Sector
  
   # Add a new employee to this sector
   def add_employee(new_employee)
+    if !new_employee.instance_of? Employee
+      raise "Argument provided is not an Employee.".red
+    end
     if check_employee(new_employee) == true
-      @@quantity_employees += 1
+      @quantity_employees += 1
       new_employee.set_sector(self)
       return true
     else 
@@ -58,17 +66,21 @@ class Sector
   end
 
   # Removes employee from this sector
-  def rm_employee()
-    @@quantity_employees -= 1
+  def rm_employee(employee)
+    if !employee.instance_of? Employee
+      raise "Argument provided is not an Employee.".red
+    end
+    @quantity_employees -= 1
+    employee.set_sector(nil)
   end
 
-  # Returns which profession the current employee has
+  # Returns which profession the current sector accepts
   def get_allowed_professions()
     return @allowed_professionals
   end
  
-  def add_allowed_profession( new_profession )
-    @allowed_professionals.push(new_profession)
+  def add_allowed_profession( *args )
+    @allowed_professionals.push(*args)
   end
 
   def rm_allowed_profession( old_profession )
@@ -94,8 +106,11 @@ class Sector
  
   # Defines a new director for a new sector.  
   def set_director(director)
-    raise "ERROR!".red + " Argument provided is not an Employee" if !director.instance_of? Employee
-    @director = director
+    if !director.instance_of? Employee
+      raise "ERROR!".red + " Argument provided is not an Employee."
+    else
+      @director = director
+    end
   end  
   
 end
