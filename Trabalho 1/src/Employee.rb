@@ -30,7 +30,7 @@ class Employee
 		now = Time.now
 		age = now.year - @birth_date.year
 		# Precise age
-		if ((now.month > @birth_date.month) or (now.month == @birth_date.month and now.day < @birth_date.day))
+		if ((now.month < @birth_date.month) or (now.month == @birth_date.month and now.day < @birth_date.day))
 			age -= 1
 		end
 		return age

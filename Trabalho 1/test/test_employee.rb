@@ -7,9 +7,9 @@ class EmployeeTest < Test::Unit::TestCase
     def setup
         @job_1 = Job.new('Auxiliar', 1500)
         @job_2 = Job.new('Tecnico', 3000)
-        @employee_1 = Employee.new(name: 'Jose', birth_date: Time.parse('25/11/1997'), cpf: '111.111.111-00', join_date: Time.parse('10/02/2005'), bonus: 350.00, role: @job_1)
-        @employee_2 = Employee.new( name: 'Thiago', birth_date: Time.parse('7/10/1998'), cpf: '222.222.222-00', join_date: Time.parse('31/11/2010'), bonus: 350.00, role: @job_2)
-        @employee_3 = Employee.new( name: 'Amanda', birth_date: Time.parse('21/09/1997'), cpf: '333.333.333-00', join_date: Time.parse('20/02/2003'), bonus: 500.00, role: @job_1)
+        @employee_1 = Employee.new(name: 'Jose', birth_date: Time.parse('25/03/1997'), cpf: '111.111.111-00', join_date: Time.parse('10/02/2005'), bonus: 350.00, role: @job_1)
+        @employee_2 = Employee.new( name: 'Thiago', birth_date: Time.parse('07/07/1998'), cpf: '222.222.222-00', join_date: Time.parse('31/11/2010'), bonus: 350.00, role: @job_2)
+        @employee_3 = Employee.new( name: 'Amanda', birth_date: Time.parse('20/09/1994'), cpf: '333.333.333-00', join_date: Time.parse('20/02/2003'), bonus: 500.00, role: @job_1)
 
 
     end
@@ -21,14 +21,14 @@ class EmployeeTest < Test::Unit::TestCase
 
     def test_get_age
         assert_equal(21, @employee_1.get_age())
-        assert_equal(19, @employee_2.get_age())
-        assert_equal(20, @employee_1.get_age())
+        assert_equal(20, @employee_2.get_age())
+        assert_equal(24, @employee_3.get_age())
     end
 
     
     def test_get_birth_date
-        assert_equal('25/11/1997', @employee_1.get_birth_date())
-        assert_equal('07/10/1998', @employee_2.get_birth_date())
+        assert_equal('25/03/1997', @employee_1.get_birth_date())
+        assert_equal('07/07/1998', @employee_2.get_birth_date())
     end
 
     def test_get_cpf

@@ -14,6 +14,14 @@ Apenas testes não garantem a qualidade do sistema.
 2. É produzido código que possa ser validado pelo teste
 3. O código é refatorado para um código sob padrões aceitáveis.
 
+#### Tutorial TDD
+
+1. Criar testes
+2. Forçar compilar
+3. Não passar nos testes
+4. Codar métodos
+5. Passar nos testes
+
 ### Boas práticas na estruturação de testes
 
 1. **Montagen de Cenário:** Ambiente necessário para que se possa realizar testes, é necessário conhecer os atributos e métodos mínimos que serão testados.
@@ -31,7 +39,7 @@ Apenas testes não garantem a qualidade do sistema.
  O objetivo do teste unitário é encontrar falhas de funcionamento dentro de uma pequena parte do sistema, que funciona independente do todo. Normalmente ele é **realizado pelo programador** e os alvos são subrotinas, métodos, classes. Geralmente é automatizado. Nele é utilizada a técnica da **Caixa Branca**.
 
 #### Integração
- O objetivo é validar a comunicação entre os componentes do sistema. Também normalmente **realizado pelo programador** e seus alvos são funcionalidades que envolvem a integração dos componentes. Com esse teste normalmente são encontradas falhas na trasmissão de dados. Geralmente é automatizado. Podem ser realizados durante a produção do sistema. Técnica da **Caixa Preta** (?).
+ O objetivo é validar a comunicação entre os componentes do sistema. Também normalmente **realizado pelo programador** e seus alvos são funcionalidades que envolvem a integração dos componentes. Com esse teste normalmente são encontradas falhas na trasmissão de dados. Geralmente é automatizado. Podem ser realizados durante a produção do sistema. Técnica da **Caixa Preta our Branca**.
 
 #### Sistema
  Objetiva executar o sistama sob pornto de vista do usuário final, varrendo as funciolidades em busca de falhas em relação aos objetivos originais. **Executado pela equipe de teste**. Esse tipo de teste é realizado após a conclusão do sistema. Normalmente utilizada a técnica da **Caixa Preta**.
