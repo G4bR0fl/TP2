@@ -70,7 +70,7 @@ class SectorIntegrationTest < Test::Unit::TestCase
     assert_equal(false, r)
 
     # Very bad error
-    assert_raise RuntimeError do
+    assert_raise ArgumentError do
       @x.add_employee(@y)
     end
   end
@@ -83,7 +83,7 @@ class SectorIntegrationTest < Test::Unit::TestCase
     assert_equal(nil, @employee_1.get_sector())
 
     # Bad error
-    assert_raise RuntimeError do
+    assert_raise ArgumentError do
       @x.rm_employee(@y)
     end
   end
@@ -95,7 +95,7 @@ class SectorIntegrationTest < Test::Unit::TestCase
     assert_equal(@employee_1, @x.get_director())
 
     # Error
-    assert_raise RuntimeError do
+    assert_raise ArgumentError do
       @x.set_director("Batata")
     end
   end

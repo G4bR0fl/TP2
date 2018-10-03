@@ -43,14 +43,6 @@ class Employee
 	def get_birth_date()
 		return @birth_date.strftime("%d/%m/%Y")
 	end
-
-	def get_sector()
-		return @sector
-  	end
-  
-	def set_sector(new_sector)
-		@sector = new_sector
-	end
 	
   	def get_cpf()
 		return @cpf
@@ -64,14 +56,33 @@ class Employee
 		return @id
 	end 
 
+	def get_sector()
+		return @sector
+  	end
+  
+	def set_sector(new_sector)
+		@sector = new_sector
+	end
+
 	# Returns the name of the Job this Employee has
 	def get_role()
+		if @role == nil
+			return nil
+		end
 		return @role.get_name()
 	end
 
 	# Returns a reference to the Job this Employee has
 	def get_Job()
 		return @role
+	end
+
+	def set_Job( new_job )
+		if !new_job.instance_of? Job
+			raise ArgumentError, "Parameter is not of class Job."
+		else
+			@role = new_job
+		end
 	end
 
 	def get_formation()

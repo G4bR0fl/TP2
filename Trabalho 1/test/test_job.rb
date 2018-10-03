@@ -2,10 +2,8 @@ require 'test/unit'
 require 'time'
 require_relative "../src/Job"
 
-=begin
-    Test Cenarios for Job class. Each test is a different method of the class.
-    Class definition in ../src/Job.rb
-=end
+#    Test Cenarios for Job class. Each test is a different method of the class.
+#    Class definition in ../src/Job.rb
 
 class JobTest < Test::Unit::TestCase    
     def setup

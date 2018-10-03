@@ -53,7 +53,7 @@ class Sector
   # Add a new employee to this sector
   def add_employee(new_employee)
     if !new_employee.instance_of? Employee
-      raise "Argument provided is not an Employee.".red
+      raise ArgumentError, "Argument provided is not an Employee.".red
     end
     if check_employee(new_employee) == true
       @quantity_employees += 1
@@ -68,7 +68,7 @@ class Sector
   # Removes employee from this sector
   def rm_employee(employee)
     if !employee.instance_of? Employee
-      raise "Argument provided is not an Employee.".red
+      raise ArgumentError, "Argument provided is not an Employee.".red
     end
     @quantity_employees -= 1
     employee.set_sector(nil)
@@ -107,7 +107,7 @@ class Sector
   # Defines a new director for a new sector.  
   def set_director(director)
     if !director.instance_of? Employee
-      raise "ERROR!".red + " Argument provided is not an Employee."
+      raise ArgumentError, "ERROR!".red + " Argument provided is not an Employee."
     else
       @director = director
     end

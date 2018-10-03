@@ -1,0 +1,5 @@
+require 'test/unit'
+require_relative 'test_job.rb'
+require_relative 'test_employee.rb'
+require_relative 'test_sector.rb'
+require_relative 'test_sort.rb'
