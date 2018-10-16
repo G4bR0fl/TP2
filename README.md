@@ -2,15 +2,8 @@
 
 ## Our projects from this subject will be listed here
 
-### Project 2
-### To do: 
-- [ ] Create the class employee fully functional.
-- [ ] Create a class for 5 different sectors.
-- [ ] Create a class that designs which role for each different sector.
-- [ ] Create a class that only accepts specific roles in each sector.
-- [ ] Create classes for each function that the employee has.
-- [ ] Sort the employees age in crescent order.
-- [ ] Do all the testing and specify which tests were made. 
+### Project 1:
+In this project, we were assigned to divide a technological company into different sectors. Each sector has specific roles. And for each sector there's a director assigned to it. Each professional has a specific salary. The main focus of the project was to order the age of the employees, in crescent order.
 
 **Note: The whole project must be object-oriented**
 
