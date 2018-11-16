@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+gem 'regex'
+gem 'colorize'
+gem 'test-unit'

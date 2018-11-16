@@ -92,6 +92,27 @@ class Employee
 	def add_training( new_training )
 		@formation.push( new_training )
 	end
+
+	def self.import_Employee(other_employee)
+		# Verificação dos argumentos básicos
+		raise ArgumentError "Nome informado não é uma string" unless other_employee['nome'].is_a? String
+		raise ArgumentError "CPF não é string" unless other_employee['cpf'].is_a? String
+		raise ArgumentError "Profissão informada não é string" unless other_employee['profissao'].is_a? String
+		raise ArgumentError "Bonus informado não é um número" unless other_employee['vale_transporte'].is_a? Numeric
+		# Verificação de argumentos de data
+		begin
+			data_nascimento = Time.parse(other_employee['data_nascimento'])
+		rescue ArgumentError
+			raise ArgumentError "Data de nascimento informada não é valida."
+		end
+		begin
+			data_entrada = Time.parse(other_employee['data_entrada'])
+		rescue ArgumentError
+			raise ArgumentError "Data de entrada informada não é valida."
+		end
+		# Cria o Employee
+		return Employee.new(name: other_employee['nome'], birth_date: data_nascimento, cpf: other_employee['cpf'], join_date: data_entrada, bonus: other_employee['vale_transporte'], formation:[other_employee['profissao']])
+	end
 end
 
 
