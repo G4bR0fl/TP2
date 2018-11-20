@@ -10,10 +10,10 @@ class Employee
 		@id = @@curr_id
 		@name = name
 		@birth_date = birth_date
-		@cpf = cpf #Aqui a gente pode fazer a transformacao pra inteiro ou n, vcs que sabem
+		@cpf = cpf 
 		@join_date = join_date
 		@salary_bonus = bonus.to_i
-    	@sector = sector
+    @sector = sector
 		@role = role
 		@formation = formation
 	end
@@ -49,7 +49,7 @@ class Employee
   	end
 
 	def get_join_date()
-		return @join_date
+		return @join_date.strftime("%d/%m/%Y")
 	end
 
 	def get_id()
@@ -75,7 +75,11 @@ class Employee
 	# Returns a reference to the Job this Employee has
 	def get_Job()
 		return @role
-	end
+  end
+  
+  def get_bonus
+    return @salary_bonus
+  end
 
 	def set_Job( new_job )
 		if !new_job.instance_of? Job
@@ -94,7 +98,7 @@ class Employee
 	end
 
 	def self.import_Employee(other_employee)
-		# Verificação dos argumentos básicos
+    # Verificação dos argumentos básicos
 		raise ArgumentError "Nome informado não é uma string" unless other_employee['nome'].is_a? String
 		raise ArgumentError "CPF não é string" unless other_employee['cpf'].is_a? String
 		raise ArgumentError "Profissão informada não é string" unless other_employee['profissao'].is_a? String
@@ -112,7 +116,28 @@ class Employee
 		end
 		# Cria o Employee
 		return Employee.new(name: other_employee['nome'], birth_date: data_nascimento, cpf: other_employee['cpf'], join_date: data_entrada, bonus: other_employee['vale_transporte'], formation:[other_employee['profissao']])
-	end
+  end
+  
+  def self.export_employee(our_employee)
+    # Verifieing basic arguments
+    raise ArgumentError "Nome informado não é uma string" unless our_employee.get_name.is_a? String
+		raise ArgumentError "CPF não é string" unless our_employee.get_cpf.is_a? String
+    raise ArgumentError "Profissão informada não é string" unless our_employee.get_Job.is_a? String
+    raise ArgumentError "Bonus informado não é um número" unless our_employee.get_bonus.is_a? Numeric
+    # Verifieing data arguments
+    begin
+			data_nascimento = Time.parse(our_employee.get_birth_date)
+    rescue ArgumentError
+      raise ArgumentError "Data de nascimento informada nao eh valida."
+    end
+    begin
+      data_entrada = Time.parse(our_employee.get_join_date)
+    rescue ArgumentError
+      raise ArgumentError "Data de entrada informada nao eh valida."
+    end
+    # Returning the employee to export
+    return our_employee
+  end
 end
 
 
