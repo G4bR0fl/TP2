@@ -48,6 +48,9 @@ class SystemsIntegrationTest < Test::Unit::TestCase
         # Cria um empregado no sistema dos colegas
         @empregado = Empregado.new
         @empregado.novoEmpregado('Kléber', 29, '10/11/1989', '012593556-24', 'auxiliar', '01/02/2016', 'designer_grafico')
+        # Cria um empregado em nosso sistema
+        @employee = Employee.new(name: 'Jose', birth_date: Time.parse('25/03/1997'), cpf: '111.111.111-00', join_date: Time.parse('10/02/2005'), bonus: 350.00 ,sector: @setores[0].get_sector_name, role: @cargos[0].get_name)
+
     end
 
     def test_import
@@ -68,5 +71,31 @@ class SystemsIntegrationTest < Test::Unit::TestCase
         assert_equal('Kléber', new_employee.get_name())
         assert_equal('10/11/1989', new_employee.get_birth_date())
         assert_equal(@empregado.getInfo()['cargo'], new_employee.get_role())
+    end
+
+    def test_export
+      # Exportando o empregado
+      export_employee = Employee.export_employee(@employee)
+
+      # Importando os valores pertinentes para o outro arquivo
+      @exported_employee = Empregado.new
+      @exported_employee.getInfo['nome'] = export_employee.get_name
+      @exported_employee.getInfo['idade'] = export_employee.get_age
+      @exported_employee.getInfo['data_nascimento'] = export_employee.get_birth_date
+      @exported_employee.getInfo['cpf'] = export_employee.get_cpf
+      @exported_employee.getInfo['cargo'] = export_employee.get_Job
+      @exported_employee.getInfo['data_entrada'] = export_employee.get_join_date
+      # Acho que isso pode ser considerado uma gambiarra, corrigir isso aqui depois
+      @exported_employee.getInfo['profissao'] = @setores[0].get_allowed_professions[0]
+      
+      # Verificando se exportou corretamente
+      assert(@exported_employee.instance_of?(Empregado))
+      assert_equal('Jose', @exported_employee.getInfo['nome'])
+      assert_equal(21, @exported_employee.getInfo['idade'])
+      assert_equal('25/03/1997', @exported_employee.getInfo['data_nascimento'])
+      assert_equal('111.111.111-00', @exported_employee.getInfo['cpf'])
+      assert_equal('auxiliar', @exported_employee.getInfo['cargo'])
+      assert_equal('10/02/2005', @exported_employee.getInfo['data_entrada'])
+      assert_equal('administrador', @exported_employee.getInfo['profissao'])
     end
 end
