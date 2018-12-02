@@ -1,5 +1,8 @@
 require_relative "Function"
-
+=begin
+    Calcula o valor de X a partir da equacao dada;
+    Inicializado com as contantes.
+=end
 class X < Function
     def run(xn, yn, zn)
         def f(xn)
