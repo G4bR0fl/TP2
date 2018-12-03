@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int SIZE = 100000;
+int SIZE = 20;
 //Cria o gráfico
 void gnuPlot(vector<double> master, vector<double> slave, string label){
 
@@ -39,7 +39,7 @@ void gnuPlot(vector<double> master, vector<double> slave, string label){
 
 
 int main(){
-    double h = 0.002;
+    double h = -0.05;
     
     vector<double> x(SIZE), y(SIZE), z(SIZE);
     vector<double> x_slave(SIZE), y_slave(SIZE), z_slave(SIZE);
