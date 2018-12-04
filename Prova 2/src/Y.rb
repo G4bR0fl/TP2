@@ -6,7 +6,12 @@ require_relative "Function"
 class Y < Function
   def run(xn, yn, zn)
 
-    @y = yn + (@constant[:h]*(@constant[:a]*(-yn+xn)*(1/@constant[:b2]) + (zn*(1/@constant[:b2]) - 1)))
+    def Y(xn, yn, zn)
+      resp = (@constant[:a]*(-yn+xn)*(1/@constant[:b2])) + (zn*(1/@constant[:b2]))
+      return resp
+    end
+
+    @y = yn + (@constant[:h]* Y(xn, yn, zn))
     
     return @y
 

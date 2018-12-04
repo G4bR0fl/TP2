@@ -11,7 +11,12 @@ class X < Function
             return resp
         end
 
-        @x = xn + (@constant[:h] * (@constant[:a]*(yn-xn) * (1/@constant[:b1]) - (f(xn)*1/@constant[:b1])))
+        def X(xn, yn)
+            resp = (@constant[:a]*(yn-xn) * (1/@constant[:b1])) - (f(xn)*1/@constant[:b1])
+            return resp
+        end
+
+        @x = xn + (@constant[:h] * X(xn, yn))
 
         return @x
     end
