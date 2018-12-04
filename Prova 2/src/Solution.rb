@@ -18,19 +18,26 @@ class Solution
         x = X.new(@@constant)
         y = Y.new(@@constant)
         z = Z.new(@@constant)
-        @xi = initial[:xi]
-        @yi = initial[:yi]
-        @zi = initial[:zi]
 
-        for i in 1..@n
-            @xn = x.run(@xi, @yi, @zi)
-            @yn = y.run(@xi, @yi, @zi)
-            @zn = z.run(@xi, @yi, @zi)
-            @xi = @xn
-            @yi = @yn
-            @zi = @zn 
+        @xn = Array.new
+        @yn = Array.new
+        @zn = Array.new
+
+        @xn.push(initial[:xn])
+        @yn.push(initial[:yn])
+        @zn.push(initial[:zn])
+
+        for i in 1...@n
+            if (i==1)
+                @xn.push(x.run(@xn[0].to_f, @yn[0].to_f, @zn[0].to_f))
+                @yn.push(y.run(@xn[0].to_f, @yn[0].to_f, @zn[0].to_f))
+                @zn.push(z.run(@xn[0].to_f, @yn[0].to_f, @zn[0].to_f))
+            else
+                @xn.push(x.run(@xn[i-1], @yn[i-1], @zn[i-1]))
+                @yn.push(y.run(@xn[i-1], @yn[i-1], @zn[i-1]))
+                @zn.push(z.run(@xn[i-1], @yn[i-1], @zn[i-1]))
+            end    
         end
-
-        return @xn, @yn, @zn
+        return @xn[@n-1], @yn[@n-1], @zn[@n-1]
     end
 end
